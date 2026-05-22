@@ -1,0 +1,15 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos virtuales (por si creaste uno local)
+venv/
+.env
+
+# Bases de datos locales de juguete
+*.sqlite3
+
+# Configuración de Visual Studio Code
+.vscode/
+.DS_Store

@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  # -----------------------------------------------
+  # CONTENEDOR 1: LA BASE DE DATOS (PostgreSQL)
+  # -----------------------------------------------
+  base-de-datos:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: poli_db
+      POSTGRES_USER: usuario_poli
+      POSTGRES_PASSWORD: password123
+    ports:
+      - "5432:5432"
+
+  # -----------------------------------------------
+  # CONTENEDOR 2: EL BACKEND (Django)
+  # -----------------------------------------------
+  backend-app:
+    build: ./backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8080:8000"
+    depends_on:
+      - base-de-datos
