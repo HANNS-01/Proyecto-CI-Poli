@@ -1,0 +1,12 @@
+```yaml
+base-de-datos:
+  image: postgres:15
+  environment:
+    POSTGRES_DB: poli_db
+    POSTGRES_USER: usuario_poli
+    POSTGRES_PASSWORD: password123
+
+backend-app:
+  build: ./backend
+  depends_on:
+    - base-de-datos

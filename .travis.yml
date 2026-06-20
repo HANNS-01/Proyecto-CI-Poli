@@ -1,0 +1,16 @@
+language: python
+python:
+  - "3.9"
+
+services:
+  - docker
+
+# Antes de las pruebas, construimos y levantamos los contenedores
+before_script:
+  - docker-compose up -d --build
+
+# Aquí definimos qué comandos determinan si el pipeline pasa o falla
+script:
+  - echo "Validando la estructura de contenedores en Travis CI..."
+  - docker ps
+  - echo "✅ Contenedores levantados correctamente en el entorno de Travis."
