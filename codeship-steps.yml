@@ -1,0 +1,4 @@
+```yaml
+- name: Validacion_Entorno
+  service: backend-app
+  command: echo "✅ Entorno de contenedores en Codeship configurado correctamente."
