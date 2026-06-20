@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # -----------------------------------------------
   # CONTENEDOR 1: LA BASE DE DATOS (PostgreSQL)
@@ -25,3 +23,19 @@ services:
       - "8080:8000"
     depends_on:
       - base-de-datos
+
+  # -----------------------------------------------
+  # CONTENEDOR 3: JENKINS (Integración Continua)
+  # -----------------------------------------------
+  jenkins:
+    image: jenkins/jenkins:lts
+    user: root # Evita problemas de permisos locales
+    ports:
+      - "8081:8080"   # Tu PC usa el 8081, Jenkins internamente usa el 8080
+      - "50000:50000" # Puerto estándar para comunicación de agentes Jenkins
+    volumes:
+      - jenkins_data:/var/jenkins_home
+
+# Declaración de volúmenes persistentes
+volumes:
+  jenkins_data:
